@@ -1,5 +1,14 @@
+import { Header } from "../../components/Header";
+import { DetailsInfo } from "./DetailsInfo";
+import { DetailsContainer } from "./styles";
+
 export function Details() {
   return(
-    <h1>Details</h1>
+    <>
+      <Header />
+      <DetailsContainer>
+        <DetailsInfo />
+      </DetailsContainer>
+    </>
   )
 }
