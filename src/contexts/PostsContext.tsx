@@ -1,5 +1,4 @@
-import { ReactNode, useCallback, useEffect, useState } from 'react'
-import { createContext } from 'use-context-selector'
+import { ReactNode, createContext, useEffect, useState } from 'react'
 import { api } from '../lib/axios'
 
 interface Posts {
@@ -23,7 +22,8 @@ export const PostsContext = createContext({} as PostContextType)
 export function PostsProviders({ children }: PostsProvidersProps) {
   const [posts, setPosts] = useState<Posts[]>([])
 
-  const fetchPosts = useCallback(async () => {
+  async function fetchPosts() {
+
     const response = await api.get('search/issues', {
       params: {
         q: 'repo:fabiobatoni/blog-fabiobatonidev',
@@ -37,14 +37,12 @@ export function PostsProviders({ children }: PostsProvidersProps) {
       created_at: item.created_at,
     }));
 
-    console.log('teste')
-
     setPosts(mappedPosts)
-  }, [])
+  }
 
   useEffect(() => {
     fetchPosts()
-  }, [fetchPosts])
+  }, [])
 
   return (
     <PostsContext.Provider
