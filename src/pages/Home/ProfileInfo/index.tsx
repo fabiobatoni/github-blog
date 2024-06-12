@@ -26,7 +26,7 @@ export function  ProfileInfo() {
   })
 
   async function getProfileInfo() {
-    const response = await api.get('users/denisvboas')
+    const response = await api.get('users/fabiobatoni')
 
     setProfile(response.data);
   }
