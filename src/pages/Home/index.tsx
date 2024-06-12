@@ -3,7 +3,6 @@ import { PostCard } from "./PostCard";
 import { ProfileInfo } from "./ProfileInfo";
 import { HomeContainer, HomeContent, ListSection, SearchSection } from "./styles";
 
-
 export function Home() {
   return(
     <>
