@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 export const DetailsInfoContainer = styled.div`
@@ -31,8 +32,11 @@ export const InfoContainer = styled.div`
       text-decoration: none;
 
       svg {
-        padding-top: 0.4rem;
         margin-left: 0.2rem;
+      }
+
+      &:hover {
+        border-bottom: 2px solid ${(props) => props.theme.blue};
       }
     }
   }
@@ -61,3 +65,19 @@ export const InfoList = styled.div`
     }
   }
 `;
+
+export const NavButton = styled(NavLink)`
+  text-decoration: none;
+  background: transparent;
+  color: ${(props) => props.theme.blue};
+  transition: border 0.2s;
+  border-bottom: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-transform: uppercase;
+
+  font-weight: 700;
+  font-size: 0.75rem;
+  line-height: 160%;
+`

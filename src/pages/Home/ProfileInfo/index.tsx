@@ -41,7 +41,7 @@ export function  ProfileInfo() {
       <InfoContainer>
         <div>
           <h1>{ profile.name }</h1>
-          <a href={ profile.html_url }>
+          <a href={ profile.html_url } target="_blank">
             GITHUB
             <Link size={20} />
           </a>

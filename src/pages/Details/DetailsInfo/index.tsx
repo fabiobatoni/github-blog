@@ -1,5 +1,5 @@
 import { ArrowLeft, CalendarBlank, ChatCircle, GithubLogo, Link } from "phosphor-react";
-import { InfoList, InfoContainer, DetailsInfoContainer } from "./styles";
+import { InfoList, InfoContainer, DetailsInfoContainer, NavButton } from "./styles";
 import { DetailsProps } from "..";
 
 import { formatDistanceToNow } from 'date-fns'
@@ -11,7 +11,7 @@ interface DetailsInfoProps {
 
 export function  DetailsInfo({ postDetails }: DetailsInfoProps) {
 
-  const { title, login, created_at, comments  } = postDetails
+  const { title, login, created_at, comments, html_url  } = postDetails
   const formattedDate = formatDistanceToNow(new Date(created_at), {
     locale: ptBR,
     addSuffix: true,
@@ -21,11 +21,11 @@ export function  DetailsInfo({ postDetails }: DetailsInfoProps) {
     <DetailsInfoContainer>
       <InfoContainer>
         <div>
-          <a href="">
+          <NavButton to="/"  type="button">
             <ArrowLeft size={20} />  
             VOLTAR
-          </a>
-          <a href="https://github.com/fabiobatoni">
+          </NavButton>
+          <a href={ html_url } target="_blank">
             VER NO GITHUB
             <Link size={20} />
           </a>

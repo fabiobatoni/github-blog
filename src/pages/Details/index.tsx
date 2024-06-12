@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import { Header } from "../../components/Header";
 import { DetailsInfo } from "./DetailsInfo";
-import { DetailsContainer, DetailsContent } from "./styles";
+import ReactMarkdown from 'react-markdown'
+import { DetailsContainer, DetailsContent, LoadingContainer } from "./styles";
 import { api } from "../../lib/axios";
 import { useParams } from "react-router-dom";
+import remarkGfm from "remark-gfm";
+import { CircleNotch } from "phosphor-react";
 
 
 export interface DetailsProps {
@@ -26,6 +29,8 @@ export function Details() {
     comments: 0
   })
 
+  const [loading, setLoading] = useState(true);
+
   const { id } = useParams()
 
   async function getDetailsPost() {
@@ -40,21 +45,33 @@ export function Details() {
       created_at: data.created_at,
       comments: data.comments,
     });
+
+    setLoading(false);
   }
 
   useEffect(() => {
     getDetailsPost()
-  }, []);
+  }, [id]);
+
+  if (loading) {
+    return (
+      <LoadingContainer>
+        <CircleNotch  size={20} />
+        <p>Loading...</p>
+      </LoadingContainer>
+    );
+  }
 
   return(
     <>
       <Header />
+      
       <DetailsContainer>
         <DetailsInfo postDetails={details}/>
 
         <DetailsContent>
           <div>
-            { details.body }
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>{details.body}</ReactMarkdown>
           </div>
         </DetailsContent>
 

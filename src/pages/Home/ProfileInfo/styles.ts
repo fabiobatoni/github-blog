@@ -39,6 +39,10 @@ export const InfoContainer = styled.div`
       svg {
         margin-left: 0.2rem;
       }
+
+      &:hover {
+        border-bottom: 2px solid ${(props) => props.theme.blue};
+      }
     }
   }
 
