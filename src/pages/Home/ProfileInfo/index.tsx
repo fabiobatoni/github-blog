@@ -2,6 +2,7 @@ import { Buildings, GithubLogo, Link, Users } from "phosphor-react";
 import { InfoContacts, InfoContainer, ProfileInfoContainer } from "./styles";
 
 export function  ProfileInfo() {
+
   return (
     <ProfileInfoContainer>
       <img src="https://avatars.githubusercontent.com/u/57717982?v=4" alt="" />
