@@ -1,35 +1,73 @@
 import { Buildings, GithubLogo, Link, Users } from "phosphor-react";
 import { InfoContacts, InfoContainer, ProfileInfoContainer } from "./styles";
+import { api } from "../../../lib/axios";
+import { useEffect, useState } from "react";
+
+interface ProfileUser {
+  name: string;
+  login: string;
+  html_url: string;
+  avatar_url: string;
+  bio: string;
+  company?: string;
+  followers: string;
+}
 
 export function  ProfileInfo() {
 
+  const [ profile, setProfile ] = useState<ProfileUser>({
+    name: '',
+    login: '',
+    html_url: '',
+    avatar_url: '',
+    bio: '',
+    company: '',
+    followers: ''
+  })
+
+  async function getProfileInfo() {
+    const response = await api.get('users/denisvboas')
+
+    setProfile(response.data);
+  }
+
+  useEffect(() => {
+    getProfileInfo()
+  }, []);
+
   return (
     <ProfileInfoContainer>
-      <img src="https://avatars.githubusercontent.com/u/57717982?v=4" alt="" />
+      <img src={ profile.avatar_url } alt="" />
       <InfoContainer>
         <div>
-          <h1>Fabio Batoni</h1>
-          <a href="https://github.com/fabiobatoni">
+          <h1>{ profile.name }</h1>
+          <a href={ profile.html_url }>
             GITHUB
             <Link size={20} />
           </a>
         </div>
 
-        <p>Front-End Developer 👨‍💻 Javascript | React | NodeJS</p>
+        <p>{ profile.bio }</p>
 
         <InfoContacts>
         <ul>
           <li>
             <GithubLogo size={20} />
-            fabiobatoni
+            { profile.login }
           </li>
-          <li>
-            <Buildings size={20} />
-            empresa
-          </li>
+          {
+            profile.company != null ? 
+              <li>
+                <Buildings size={20} />
+                empresa
+              </li>
+            : 
+              <>
+              </>
+          }
           <li>
             <Users size={20} />
-            seguidores
+            { profile.followers }
           </li>
         </ul>
       </InfoContacts>
