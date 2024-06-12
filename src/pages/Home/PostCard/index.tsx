@@ -9,14 +9,14 @@ interface PostCard {
 
 export function PostCard ({ post }: PostCard) {
 
-  const { title, created_at, body } = post
+  const { title, created_at, body, number } = post
   const formattedDate = formatDistanceToNow(new Date(created_at), {
     locale: ptBR,
     addSuffix: true,
   })
 
   return (
-    <PostCardContainer>
+    <PostCardContainer to={`details/${number}`}>
       <header>
         <h1>{ title }</h1>
         <span>{ formattedDate }</span>

@@ -3,6 +3,7 @@ import { api } from '../lib/axios'
 
 interface Posts {
   id: number;
+  number: number;
   title: string;
   body: string;
   created_at: string;
@@ -32,6 +33,7 @@ export function PostsProviders({ children }: PostsProvidersProps) {
 
     const mappedPosts = response.data.items.map((item: Posts) => ({
       id: item.id,
+      number: item.number,
       title: item.title,
       body: item.body,
       created_at: item.created_at,

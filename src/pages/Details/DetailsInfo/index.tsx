@@ -1,8 +1,22 @@
 import { ArrowLeft, CalendarBlank, ChatCircle, GithubLogo, Link } from "phosphor-react";
 import { InfoList, InfoContainer, DetailsInfoContainer } from "./styles";
+import { DetailsProps } from "..";
 
+import { formatDistanceToNow } from 'date-fns'
+import { ptBR } from 'date-fns/locale'
 
-export function  DetailsInfo() {
+interface DetailsInfoProps {
+  postDetails: DetailsProps
+}
+
+export function  DetailsInfo({ postDetails }: DetailsInfoProps) {
+
+  const { title, login, created_at, comments  } = postDetails
+  const formattedDate = formatDistanceToNow(new Date(created_at), {
+    locale: ptBR,
+    addSuffix: true,
+  })
+
   return (
     <DetailsInfoContainer>
       <InfoContainer>
@@ -17,21 +31,21 @@ export function  DetailsInfo() {
           </a>
         </div>
 
-        <h1>JavaScript data types and data structures</h1>
+        <h1>{ title }</h1>
 
         <InfoList>
         <ul>
           <li>
             <GithubLogo size={20} />
-            fabiobatoni
+            { login }
           </li>
           <li>
             <CalendarBlank size={20} />
-            Há 1 dia
+            { formattedDate }
           </li>
           <li>
             <ChatCircle size={20} />
-            5 comentários
+            { comments } comentários
           </li>
         </ul>
       </InfoList>
