@@ -1,9 +1,10 @@
-import { useContext } from "react";
 import { Header } from "../../components/Header";
 import { PostCard } from "./PostCard";
 import { ProfileInfo } from "./ProfileInfo";
 import { HomeContainer, HomeContent, ListSection, SearchSection } from "./styles";
 import { PostsContext } from "../../contexts/PostsContext";
+import { useContextSelector } from "use-context-selector";
+
 
 export interface Posts {
   id: number;
@@ -15,7 +16,16 @@ export interface Posts {
 
 export function Home() {
 
-  const { posts } = useContext(PostsContext);
+  const fetchPosts = useContextSelector(PostsContext, (context) => {
+    return context.fetchPosts
+  })
+
+  const posts = useContextSelector(PostsContext, (context) => {
+    return context.posts
+  })
+
+  console.log(posts)
+
 
   return(
     <>
@@ -32,12 +42,16 @@ export function Home() {
           </div>
           <input
             type="text"
-            placeholder="Busque o conteúdo"
+            placeholder="Busque o conteúdo e pressione [Enter]"
+            onKeyDown={(e) =>
+              e.key === 'Enter' && fetchPosts(e.currentTarget.value)
+            }
+            onBlur={(e) => fetchPosts(e.currentTarget.value)}
           />
         </SearchSection>
         <ListSection>
           {posts &&
-            posts.map((post) => (
+            posts.map(post => (
               <PostCard
                 key={post.id}
                 post={post}

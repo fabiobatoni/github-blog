@@ -1,5 +1,6 @@
-import { ReactNode, createContext, useEffect, useState } from 'react'
+import { ReactNode, useCallback, useEffect, useState } from 'react'
 import { api } from '../lib/axios'
+import { createContext } from 'use-context-selector';
 
 interface Posts {
   id: number;
@@ -23,11 +24,11 @@ export const PostsContext = createContext({} as PostContextType)
 export function PostsProviders({ children }: PostsProvidersProps) {
   const [posts, setPosts] = useState<Posts[]>([])
 
-  async function fetchPosts() {
+  const fetchPosts = useCallback(async (query = '') => {
 
     const response = await api.get('search/issues', {
       params: {
-        q: 'repo:fabiobatoni/blog-fabiobatonidev',
+        q: `${query} repo:fabiobatoni/blog-fabiobatonidev/`,
       },
     })
 
@@ -40,11 +41,12 @@ export function PostsProviders({ children }: PostsProvidersProps) {
     }));
 
     setPosts(mappedPosts)
-  }
+  }, []) 
+
 
   useEffect(() => {
     fetchPosts()
-  }, [])
+  }, [fetchPosts])
 
   return (
     <PostsContext.Provider
