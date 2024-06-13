@@ -6,6 +6,7 @@
 [![Axios](https://img.shields.io/badge/Axios-purple?logo=Axios&logoColor=white&style=for-the-badge)](https://axios-http.com/docs/intro)
 [![Eslint](https://img.shields.io/badge/Eslint-002D62?logo=Eslint&logoColor=white&style=for-the-badge)](https://eslint.org)
 [![StyledComponents](https://img.shields.io/badge/Styled-202020?logo=StyledComponents&logoColor=white&style=for-the-badge)](https://styled-components.com)
+[![DateFns](https://img.shields.io/badge/DateFns-722F37?logo=DateFns&logoColor=white&style=for-the-badge)](https://styled-components.com)
 
 
 ## 1. Introduction
