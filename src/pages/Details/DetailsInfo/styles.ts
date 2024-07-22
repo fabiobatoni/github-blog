@@ -48,13 +48,14 @@ export const InfoContainer = styled.div`
   }
 
   @media (max-width: 768px) {
-    flex-direction: column;
-    height: auto;
-    padding: 1rem;
-    gap: 1rem;
+    
+    div {
+      justify-content: space-around;
+    }
 
     h1 {
-    font-size: 0.8rem;
+      margin-left: 2rem;
+      font-size: 0.8rem;
     }
   }
   
@@ -74,6 +75,17 @@ export const InfoList = styled.div`
       justify-content: center;
       align-items: center;
       gap: 0.5rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    
+    ul {
+      gap: 1;
+    }
+
+    li {
+      font-size: 0.6rem;
     }
   }
 `;
