@@ -46,6 +46,18 @@ export const InfoContainer = styled.div`
     font-size: 2rem;
     color: ${(props) => props.theme['base-title']};
   }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    height: auto;
+    padding: 1rem;
+    gap: 1rem;
+
+    h1 {
+    font-size: 0.8rem;
+    }
+  }
+  
 `;
 
 export const InfoList = styled.div`

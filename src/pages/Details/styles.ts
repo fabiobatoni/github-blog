@@ -23,6 +23,18 @@ export const DetailsContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    height: auto;
+    padding: 1rem;
+    gap: 1rem;
+
+    div {
+      width: 50%;
+    }
+  }
+  
 `;
 
 export const LoadingContainer = styled.div`

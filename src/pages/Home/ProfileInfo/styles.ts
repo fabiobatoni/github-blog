@@ -18,6 +18,27 @@ export const ProfileInfoContainer = styled.div`
     width: 9.25rem;
     height: 9.25rem;
   }
+
+   @media (max-width: 768px) {
+    flex-direction: column;
+    height: auto;
+    padding: 1rem;
+    gap: 1rem;
+
+    img {
+      width: 6rem;
+      height: 6rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0.5rem;
+    
+    img {
+      width: 5rem;
+      height: 5rem;
+    }
+  }
 `;
 
 export const InfoContainer = styled.div`
