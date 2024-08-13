@@ -1,9 +1,9 @@
+import { useContextSelector } from "use-context-selector";
 import { Header } from "../../components/Header";
+import { PostsContext } from "../../contexts/PostsContext";
 import { PostCard } from "./PostCard";
 import { ProfileInfo } from "./ProfileInfo";
 import { HomeContainer, HomeContent, ListSection, SearchSection } from "./styles";
-import { PostsContext } from "../../contexts/PostsContext";
-import { useContextSelector } from "use-context-selector";
 
 
 export interface Posts {
@@ -23,8 +23,6 @@ export function Home() {
   const posts = useContextSelector(PostsContext, (context) => {
     return context.posts
   })
-
-  console.log(posts)
 
 
   return(

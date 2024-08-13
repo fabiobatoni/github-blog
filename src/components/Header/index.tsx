@@ -1,5 +1,5 @@
-import { HeaderContainer } from './styles'
 import imgHeader from '../../assets/header.svg'
+import { HeaderContainer } from './styles'
 
 export function Header() {
   return(
